@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require_relative '../src/calculator_client'
+
+# default values
+opts = {
+  port: 4000,
+  ip:   '127.0.0.1'
+}
+
+# parse stdin options
+OptionParser.new do |parser|
+  parser.banner = "Usage: client [options]"
+
+  parser.on("-pPORT", "--port=PORT", "port of the running server") do |port|
+    opts[:port] = port
+  end
+
+  parser.on("-bIP", "--ip", "ip of the running server") do |ip|
+    opts[:ip] = ip
+  end
+end.parse!
+
+CalculatorClient.new(**opts).start!
