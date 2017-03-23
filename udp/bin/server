@@ -17,7 +17,7 @@ OptionParser.new do |parser|
     opts[:port] = port
   end
 
-  parser.on("-bIP", "--ip", "ip the server will bind to") do |ip|
+  parser.on("-bIP", "--ip=IP", "ip the server will bind to") do |ip|
     opts[:ip] = ip
   end
 end.parse!
